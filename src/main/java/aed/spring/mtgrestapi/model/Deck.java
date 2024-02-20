@@ -22,6 +22,9 @@ public class Deck {
     @JoinColumn(name = "color_id")
     private Color color;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "card_id")
+    @JoinTable(
+            name = "deck_card",
+            joinColumns = @JoinColumn(name = "deck_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id"))
     private List<Card> cards;
 }

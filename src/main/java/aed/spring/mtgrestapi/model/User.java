@@ -1,10 +1,12 @@
 package aed.spring.mtgrestapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -15,4 +17,10 @@ public class User {
     private String username;
     @Column(name = "user_password")
     private String password;
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
 }

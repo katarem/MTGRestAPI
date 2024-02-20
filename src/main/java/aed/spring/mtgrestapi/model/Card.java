@@ -16,7 +16,8 @@ public class Card {
     private String cardName;
     @Column(name = "card_img")
     private String img;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "deck_id")
+    @ManyToMany(mappedBy = "cards",cascade = CascadeType.ALL)
     private List<Deck> decks;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Color color;
 }
