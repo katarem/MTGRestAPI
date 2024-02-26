@@ -1,5 +1,6 @@
 package aed.spring.mtgrestapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,12 +16,11 @@ public class Deck {
     private int id;
     @Column(name = "deck_name")
     private String deckName;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "color_id")
-    private Color color;
+    @Column(name = "deck_color")
+    private String color;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "deck_card",

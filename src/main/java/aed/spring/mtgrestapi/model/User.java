@@ -16,8 +16,10 @@ public class User {
     @Column(name = "user_username")
     private String username;
     @Column(name = "user_password")
+    @JsonIgnore
     private String password;
-
+    @Column(name = "user_image")
+    private String profileImg;
     public User(String username, String password){
         this.username = username;
         this.password = password;

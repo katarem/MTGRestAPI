@@ -1,5 +1,6 @@
 package aed.spring.mtgrestapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +18,8 @@ public class Card {
     @Column(name = "card_img")
     private String img;
     @ManyToMany(mappedBy = "cards",cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Deck> decks;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Color color;
+    @Column(name = "card_color")
+    private String color;
 }
